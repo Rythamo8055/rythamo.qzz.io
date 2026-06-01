@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Lora, Courier_Prime, Outfit } from "next/font/google";
+import { Playfair_Display, Lora, Courier_Prime, Outfit, Anton, UnifrakturMaguntia } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -24,6 +24,20 @@ const courier = Courier_Prime({
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
+  display: "swap",
+});
+
+const anton = Anton({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-anton",
+  display: "swap",
+});
+
+const unifraktur = UnifrakturMaguntia({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-unifraktur",
   display: "swap",
 });
 
@@ -72,7 +86,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${lora.variable} ${courier.variable} ${outfit.variable} h-full antialiased scroll-smooth`}
+      className={`${playfair.variable} ${lora.variable} ${courier.variable} ${outfit.variable} ${anton.variable} ${unifraktur.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full bg-paper text-ink flex flex-col font-serif-text selection:bg-ink selection:text-paper">
         {children}
