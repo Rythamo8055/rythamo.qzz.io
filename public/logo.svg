@@ -1,0 +1,21 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer circle stamp -->
+  <circle cx="100" cy="100" r="90" stroke="#1f1d1a" stroke-width="2" stroke-dasharray="6 3" />
+  <circle cx="100" cy="100" r="82" stroke="#1f1d1a" stroke-width="4" />
+  <circle cx="100" cy="100" r="76" stroke="#1f1d1a" stroke-width="1.5" />
+  
+  <!-- Central text "Ry_" in serif font -->
+  <text x="96" y="122" font-family="'Playfair Display', 'Georgia', serif" font-size="70" font-weight="bold" fill="#1f1d1a" text-anchor="middle" letter-spacing="-1">Ry_</text>
+  
+  <!-- Curved text top: "THE DAILY PORTFOLIO" -->
+  <path id="curve-top" d="M 32,100 A 68,68 0 0,1 168,100" fill="none" />
+  <text font-family="'Courier Prime', 'Courier New', monospace" font-size="9" font-weight="bold" fill="#1f1d1a" letter-spacing="3.2">
+    <textPath href="#curve-top" startOffset="50%" text-anchor="middle">THE DAILY PORTFOLIO</textPath>
+  </text>
+  
+  <!-- Curved text bottom: "EST. 2026 • GOOTY" -->
+  <path id="curve-bottom" d="M 168,100 A 68,68 0 0,1 32,100" fill="none" />
+  <text font-family="'Courier Prime', 'Courier New', monospace" font-size="9" font-weight="bold" fill="#1f1d1a" letter-spacing="2.8">
+    <textPath href="#curve-bottom" startOffset="50%" text-anchor="middle">EST. 2026 • GOOTY • AP</textPath>
+  </text>
+</svg>
