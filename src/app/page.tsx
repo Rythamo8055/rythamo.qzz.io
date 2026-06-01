@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
 // Define Project and Photographic Archive data structure
@@ -15,6 +15,7 @@ interface Project {
 }
 
 export default function NewspaperPortfolio() {
+  const [loading, setLoading] = useState(true);
   const [activeStory, setActiveStory] = useState<Project | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [telegramData, setTelegramData] = useState({
@@ -25,6 +26,13 @@ export default function NewspaperPortfolio() {
   });
 
   const dialogRef = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3300); // 3.3s splits and sweeps screen
+    return () => clearTimeout(timer);
+  }, []);
 
   const projects: Project[] = [
     {
@@ -78,7 +86,51 @@ export default function NewspaperPortfolio() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow flex flex-col justify-between">
+    <>
+      {/* 0. INTRODUCTORY SEAL-BREAK LOADING TRANSITION */}
+      {loading && (
+        <div className="fixed inset-0 z-50 flex overflow-hidden pointer-events-auto select-none font-typewriter">
+          {/* Left Split Door */}
+          <div className="absolute inset-y-0 left-0 w-1/2 bg-paper border-r border-ink border-opacity-10 flex items-center justify-end split-loading-left">
+            {/* Left Seal Half */}
+            <div className="relative w-48 h-48 translate-x-24 flex items-center justify-center emblem-split-left seal-stage-stamp">
+              <img
+                src="/logo.svg"
+                alt="Rythamo Seal Left"
+                width={192}
+                height={192}
+                className="opacity-95 max-w-none"
+                style={{ clipPath: "inset(0 50% 0 0)" }}
+              />
+            </div>
+          </div>
+
+          {/* Right Split Door */}
+          <div className="absolute inset-y-0 right-0 w-1/2 bg-paper border-l border-ink border-opacity-10 flex items-center justify-start split-loading-right">
+            {/* Right Seal Half */}
+            <div className="relative w-48 h-48 -translate-x-24 flex items-center justify-center emblem-split-right seal-stage-stamp">
+              <img
+                src="/logo.svg"
+                alt="Rythamo Seal Right"
+                width={192}
+                height={192}
+                className="opacity-95 max-w-none"
+                style={{ clipPath: "inset(0 0 0 50%)" }}
+              />
+            </div>
+          </div>
+
+          {/* Skip/Manual Open Trigger */}
+          <button
+            onClick={() => setLoading(false)}
+            className="absolute bottom-16 left-1/2 -translate-x-1/2 px-6 py-3 border border-ink text-ink font-typewriter text-xs font-bold uppercase tracking-widest bg-paper-light hover:bg-[#6A5D21] hover:text-paper cursor-pointer rounded-none active:translate-y-0.5 pointer-events-auto transition-all shadow-md"
+          >
+            Open Gazette (Break Seal)
+          </button>
+        </div>
+      )}
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow flex flex-col justify-between">
       {/* 1. TOP UTILITY BAR / TICKER */}
       <div className="w-full border-b border-ink py-1 text-xs font-typewriter flex flex-wrap justify-between items-center opacity-85 mb-4 select-none">
         <div className="flex items-center gap-2">
@@ -160,10 +212,10 @@ export default function NewspaperPortfolio() {
               <h3 className="text-xl font-bold font-serif-display leading-tight border-b border-ink border-dashed pb-2">
                 Who is Rythamo?
               </h3>
-              <p className="text-sm font-serif-text leading-relaxed text-ink-light text-justify text-wrap pretty">
+              <p className="text-[15px] font-serif-text leading-relaxed text-ink-light text-left text-wrap pretty">
                 Born in <strong>Gooty</strong>, Andhra Pradesh, <strong>Vishnu Vardhan M</strong> (widely addressed in the tech community as <strong>Rythamo</strong>) is an emerging voice in agentic software architecture.
               </p>
-              <p className="text-sm font-serif-text leading-relaxed text-ink-light text-justify text-wrap pretty">
+              <p className="text-[15px] font-serif-text leading-relaxed text-ink-light text-left text-wrap pretty">
                 Currently pursuing his Computer Science and Engineering curriculum at <strong>Malla Reddy Deemed to be University</strong>, Rythamo bridges traditional algorithmic academic fundamentals with the dynamic capabilities of modern neural pipelines.
               </p>
               <div className="bg-paper-dark border border-ink p-3 rounded-none font-typewriter text-xs space-y-1 mt-4">
@@ -218,7 +270,7 @@ export default function NewspaperPortfolio() {
             </div>
 
             {/* Double column lead paragraph */}
-            <div className="columns-1 sm:columns-2 gap-6 text-sm font-serif-text leading-relaxed text-justify text-ink-light drop-cap">
+            <div className="columns-1 sm:columns-2 gap-8 text-[15px] font-serif-text leading-relaxed text-left text-ink-light drop-cap">
               <p className="drop-cap text-wrap pretty">
                 As the paradigm of traditional computing continues to bend toward neural integration, the next wave of computer scientists are transforming into system choreographers. Vishnu Vardhan M, a promising software engineer at Malla Reddy University, is spearheading this localized transition. With a rigorous computer science foundation, Rythamo focuses his efforts on constructing robust agentic networks capable of autonomous code generation, parsing, and real-time environment execution. 
               </p>
@@ -656,5 +708,6 @@ export default function NewspaperPortfolio() {
         </div>
       </footer>
     </div>
+    </>
   );
 }
