@@ -8,12 +8,13 @@
   --color-ink-light: #47433B;
   --color-ink-muted: #6E685C;
   --color-accent: #6A5D21;
-  
+
   --font-serif-display: var(--font-playfair), "Georgia", serif;
   --font-serif-text: var(--font-lora), "Georgia", serif;
   --font-sans-modern: var(--font-outfit), "Helvetica Neue", sans-serif;
   --font-anton: var(--font-anton), "Impact", sans-serif;
-  --font-unifraktur: var(--font-unifraktur), "Old English Text MT", serif;
+  --font-gothic: var(--font-unifraktur), "Old English Text MT", serif;
+  --font-courier: var(--font-courier), "Courier New", monospace;
 }
 
 :root {
@@ -22,12 +23,13 @@
   --accent: #6A5D21;
 }
 
+/* ── BASE ── */
 @layer base {
   body {
     background-color: var(--color-paper);
     color: var(--color-ink);
-    /* Subtle premium newsprint paper texture overlay */
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.045'/%3E%3C/svg%3E");
+    font-feature-settings: "kern" 1, "liga" 1;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -35,95 +37,122 @@
   }
 }
 
+/* ── UTILITIES ── */
 @layer utilities {
-  .border-double-thick {
-    border-top: 6px double var(--ink);
-    border-bottom: 2px solid var(--ink);
-    padding-top: 2px;
-    padding-bottom: 2px;
+  /* Newspaper rule lines */
+  .rule-top { border-top: 2.5px solid var(--ink); }
+  .rule-top-thick { border-top: 6px double var(--ink); }
+  .rule-bottom { border-bottom: 2.5px solid var(--ink); }
+  .rule-bottom-thick { border-bottom: 6px double var(--ink); }
+  
+  /* Vertical dividers */
+  .divider-l { border-left: 1px solid rgba(28, 26, 23, 0.18); }
+  .divider-r { border-right: 1px solid rgba(28, 26, 23, 0.18); }
+
+  /* Newspaper text justification */
+  .text-justify {
+    text-align: justify;
+    text-justify: inter-word;
   }
 
-  .border-double-thick-accent {
-    border-top: 6px double var(--accent);
-    border-bottom: 2px solid var(--accent);
-    padding-top: 2px;
-    padding-bottom: 2px;
-  }
-
-  .border-double-thin {
-    border-top: 2px solid var(--ink);
-    border-bottom: 6px double var(--ink);
-    padding-top: 2px;
-    padding-bottom: 2px;
-  }
-
-  .headline-massive {
+  /* Fluid typography */
+  .headline-fluid {
     font-family: var(--font-anton);
-    font-size: clamp(2.5rem, 8vw, 6.5rem);
+    font-size: clamp(2.25rem, 8vw, 5.25rem);
     line-height: 0.9;
     letter-spacing: -0.02em;
     text-transform: uppercase;
   }
 
-  .font-gothic {
-    font-family: var(--font-unifraktur);
+  .masthead-title {
+    font-family: var(--font-gothic);
+    font-size: clamp(1.85rem, 7.5vw, 4.75rem);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    font-weight: 700;
   }
 
-  /* Newspaper photo raster halftone-inspired print overlay */
+  /* Halftone Engravings and paper styles */
   .newspaper-photo {
-    filter: grayscale(100%) contrast(1.18) brightness(0.95);
-    transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: grayscale(100%) contrast(1.22) brightness(0.96);
+    transition: filter 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  
-  .newspaper-photo:hover {
-    filter: grayscale(20%) contrast(1.05) brightness(1);
-    transform: scale(1.025);
+
+  .photo-frame {
+    position: relative;
+    border: 2px solid var(--ink);
+    background-color: var(--color-paper-dark);
+    overflow: hidden;
   }
-  
+
+  /* Vintage print dot matrix effect overlay */
+  .photo-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, var(--color-ink) 0.75px, transparent 0.75px);
+    background-size: 3.5px 3.5px;
+    opacity: 0.13;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  @media (hover: hover) {
+    .photo-frame:hover .newspaper-photo {
+      filter: grayscale(15%) contrast(1.05) brightness(1);
+      transform: scale(1.02);
+    }
+  }
+
+  /* Drop caps for classic editorial story */
   .drop-cap::first-letter {
-    font-family: var(--font-unifraktur);
-    font-size: 5.5rem;
-    line-height: 0.7;
+    font-family: var(--font-gothic);
+    font-size: 4.25rem;
+    line-height: 0.75;
     float: left;
-    margin-right: 0.12em;
+    margin-right: 0.125em;
     margin-top: 0.05em;
     color: var(--accent);
   }
 
-  /* Emblem rotating stamp animation */
+  /* Continuous slow spinning stamp animations */
   @keyframes emblem-stamp-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
 
   .emblem-spin {
-    animation: emblem-stamp-spin 25s linear infinite;
+    animation: emblem-stamp-spin 28s linear infinite;
     transform-origin: center;
   }
 
-  .emblem-spin:hover {
-    animation-play-state: paused;
+  @media (hover: hover) {
+    .emblem-spin:hover {
+      animation-play-state: paused;
+    }
   }
 
-  /* Continuous horizontal ticker animation */
-  @keyframes ticker-marquee-slide {
-    0% {
-      transform: translate3d(0, 0, 0);
-    }
-    100% {
-      transform: translate3d(-50%, 0, 0);
-    }
+  /* Bottom Stock ticker */
+  @keyframes ticker-slide {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
   }
 
   .ticker-animate {
-    animation: ticker-marquee-slide 30s linear infinite;
+    animation: ticker-slide 22s linear infinite;
   }
 
-  .ticker-animate:hover {
-    animation-play-state: paused;
+  @media (hover: hover) {
+    .ticker-animate:hover {
+      animation-play-state: paused;
+    }
+  }
+
+  /* Reduced motion adaptations */
+  @media (prefers-reduced-motion: reduce) {
+    .emblem-spin { animation: none; }
+    .ticker-animate { animation: none; }
+    .newspaper-photo { transition: none; }
+    .photo-frame:hover .newspaper-photo { transform: none; }
   }
 }
