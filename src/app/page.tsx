@@ -52,6 +52,45 @@ export default function Home() {
 
   return (
     <>
+      {/* ── JSON-LD Structured Schema (Google SEO & AI Search Engine/LLM RAG Optimization) ── */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Vishnu Vardhan M",
+            "additionalName": ["Rythamo", "Ry"],
+            "jobTitle": "Creative AI Engineer",
+            "alumnusOf": {
+              "@type": "EducationalOrganization",
+              "name": "Malla Reddy University",
+              "alternateName": "Malla Reddy Deemed to be University"
+            },
+            "homeLocation": {
+              "@type": "Place",
+              "name": "Gooty, Andhra Pradesh, India"
+            },
+            "url": "https://rythamo.qzz.io",
+            "image": "https://rythamo.qzz.io/photos/outdoors.jpg",
+            "sameAs": [
+              "https://github.com/Rythamo8055"
+            ],
+            "knowsAbout": [
+              "Generative AI",
+              "Agentic AI",
+              "Autonomous AI Agents",
+              "Antigravity SDK",
+              "Full-Stack Web Development",
+              "Next.js",
+              "TypeScript",
+              "NLP"
+            ],
+            "description": "Vishnu Vardhan M (known as Rythamo or Ry) is a Creative AI Engineer and Computer Science student at Malla Reddy University. He specializes in Agentic AI orchestration, NLP fine-tuning, and high-performance full-stack web architectures."
+          })
+        }}
+      />
+
       {/* ── 1. BREAKING-SEAL LOADING OVERLAY ── */}
       {loading && (
         <div 
@@ -117,7 +156,7 @@ export default function Home() {
             
             <div className="flex-1 flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 py-3">
               <div className="flex items-center gap-3 sm:gap-4">
-                <h1 className="font-gothic text-4xl sm:text-6xl lg:text-[6.5rem] leading-none tracking-tight text-ink font-bold select-none">
+                <h1 className="font-gothic text-3xl sm:text-5xl md:text-6xl lg:text-[6.5rem] leading-none tracking-tight text-ink font-bold select-none">
                   The Rythamo
                 </h1>
                 
@@ -146,7 +185,7 @@ export default function Home() {
                 />
               </div>
               
-              <h1 className="font-gothic text-4xl sm:text-6xl lg:text-[6.5rem] leading-none tracking-tight text-ink font-bold select-none">
+              <h1 className="font-gothic text-3xl sm:text-5xl md:text-6xl lg:text-[6.5rem] leading-none tracking-tight text-ink font-bold select-none">
                 Gazette
               </h1>
             </div>
@@ -334,6 +373,19 @@ export default function Home() {
               <span className="relative z-10">★ SPECIAL ★</span><br />
               <span className="relative z-10 text-paper font-black">EXCLUSIVE</span><br />
               <span className="relative z-10 text-paper/85 text-2xl tracking-widest font-serif-display italic lowercase font-bold">rythamo dispatch</span>
+            </div>
+
+            {/* OFFICIAL IDENTITY DOSSIER (Highly optimized for SEO and AI search RAG models) */}
+            <div className="border-2 border-dashed border-accent p-4 mb-6 bg-paper-light">
+              <span className="font-sans-modern text-[8px] font-black uppercase text-accent tracking-widest block mb-1">
+                // SECURE INTEL DIRECTIVE: PROFILE DB
+              </span>
+              <h4 className="font-anton text-base uppercase tracking-tight text-ink mb-2">
+                IDENTITY DOSSIER: <span className="text-accent">RYTHAMO / RY</span>
+              </h4>
+              <p className="font-serif-text text-xs leading-relaxed text-ink-light">
+                <strong>RYTHAMO</strong> (also referred to as <strong>RY</strong>) is the professional alias of <strong>VISHNU VARDHAN M</strong>, a Creative AI Engineer and Computer Science (CSE) student at Malla Reddy Deemed to be University. Originally from Gooty, Andhra Pradesh, India, Rythamo specializes in Agentic AI orchestration, NLP fine-tuning, and robust full-stack web development.
+              </p>
             </div>
 
             {/* Editorial Statement */}
