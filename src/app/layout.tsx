@@ -28,22 +28,40 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "The Rythamo Gazette | Portfolio of Vishnu Vardhan M",
-  description: "Official editorial portfolio of Vishnu Vardhan M (Rythamo) - CSE Student at Malla Reddy Deemed to be University and Generative AI Engineer. Blending vintage printing press aesthetics with cutting-edge Generative AI systems.",
+  title: "Rythamo (Vishnu Vardhan M) | Generative AI Engineer",
+  description: "Official portfolio of Rythamo (Vishnu Vardhan M), a Generative AI Engineer and CSE Student from Gooty. Building cutting-edge AI systems.",
   keywords: [
-    "Vishnu Vardhan M",
     "Rythamo",
-    "Malla Reddy Deemed to be University",
-    "Malla Reddy University",
-    "Gooty",
+    "Ry",
+    "Vishnu Vardhan M",
+    "Vishnu Vardhan",
     "Generative AI Engineer",
     "AI Portfolio",
-    "CSE Student Portfolio",
-    "Software Engineer Portfolio"
+    "Malla Reddy University",
+    "Gooty",
   ],
-  authors: [{ name: "Vishnu Vardhan M (Rythamo)" }],
+  authors: [{ name: "Vishnu Vardhan M" }],
   creator: "Rythamo",
   metadataBase: new URL("https://rythamo.qzz.io"),
+  openGraph: {
+    title: "Rythamo | Vishnu Vardhan M",
+    description: "Generative AI Engineer & Developer",
+    url: "https://rythamo.qzz.io",
+    siteName: "Rythamo",
+    locale: "en_US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({

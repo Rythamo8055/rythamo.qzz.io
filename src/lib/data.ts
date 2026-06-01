@@ -15,13 +15,13 @@ export const AUTHOR = {
   domain: "https://rythamo.qzz.io",
   email: "rythamo@example.com",
   bio: [
-    "Born in Gooty, Andhra Pradesh, Vishnu Vardhan M — widely known in the tech community as Rythamo — is an emerging voice in agentic software architecture.",
-    "Currently pursuing his Computer Science and Engineering degree at Malla Reddy Deemed to be University, Hyderabad, Rythamo bridges classical algorithmic foundations with the dynamic capabilities of modern neural pipelines.",
+    "VISHNU VARDHAN M. CREATIVE AI ENGINEER.",
+    "CSE @ MALLA REDDY UNIVERSITY. BORN IN GOOTY, AP.",
   ],
   quote:
-    '"We are no longer programming machines; we are instructing agents." — Rythamo, at a campus AI symposium.',
+    '"WE INSTRUCT AGENTS. WE DON\'T TYPE SCRIPTS."',
   editorialOpinion:
-    '"Growing up in Gooty taught me the value of efficiency. In water, transport, or code — layout efficiency dictates outcomes. Generative AI is our loom, and words are our thread. By weaving robust schemas, we build digital structures that transcend simple scripts."',
+    'Generative AI is our loom. We build structures that transcend code. Total autonomy.',
 } as const;
 
 // =====================================================================
@@ -41,36 +41,30 @@ export interface Project {
 export const PROJECTS: Project[] = [
   {
     id: "project-agentic",
-    category: "INTELLIGENT SYSTEMS",
-    date: "MAY 28, 2026",
-    headline: "Scholar Deploys Multi-Agent Design Patterns on Local Infrastructure",
-    bulletin:
-      "Vishnu Vardhan M implements a fleet of autonomous coders using the Google Antigravity SDK, orchestrating seamless developer workflows through recursive validation loops.",
-    fullStory:
-      "HYDERABAD — In an effort to automate complex software cycles, Rythamo successfully deployed an autonomous multi-agent cluster code-named 'AGY-Stack'. The system segments high-level engineering tasks into granular components and delegates them to custom-configured LLM instances. By implementing recursive validation loops, the agents automatically write, audit, and debug their own code files. This architecture significantly minimises developer latency, marking a crucial step forward in agentic coding methodologies within the Malla Reddy academic circle.",
-    tags: ["Agentic AI", "Antigravity SDK", "Autonomy", "Next.js"],
+    category: "AI",
+    date: "2026",
+    headline: "MULTI-AGENT INFRASTRUCTURE",
+    bulletin: "Fleet of autonomous coders deployed via Antigravity SDK. Recursive loops achieved.",
+    fullStory: "AGY-Stack segments engineering tasks to LLMs. Zero human intervention.",
+    tags: ["Agentic", "AGY", "Autonomous"],
   },
   {
     id: "project-nlp",
-    category: "NATURAL LANGUAGE ENGINE",
-    date: "APRIL 14, 2026",
-    headline: "Cognitive Dialect Model Bridge Declared a Triumph in Telugu Processing",
-    bulletin:
-      "A fine-tuned neural model captures local idioms and technical expressions from the Gooty region — improving comprehension of CSE concepts by a factor of three.",
-    fullStory:
-      "GOOTY — Using targeted Low-Rank Adaptation (LoRA) and custom-curated bilingual datasets, Rythamo has developed 'Telug-AI', a specialised LLM bridge. The project spans standard English software syntax and the rich, idiom-dense Telugu dialects common in Rayalaseema. The model is optimised to explain complex computer science principles, system architectures, and mathematical expressions using intuitive Telugu vocabulary, dramatically improving retention in foundational CSE courses.",
-    tags: ["NLP", "LoRA", "Telugu Llama", "Linguistic RAG"],
+    category: "NLP",
+    date: "2026",
+    headline: "TELUGU LLM BRIDGE",
+    bulletin: "Fine-tuned neural model captures local Gooty idioms.",
+    fullStory: "Telug-AI uses LoRA to translate complex CSE architecture into fluent Rayalaseema Telugu.",
+    tags: ["NLP", "LoRA", "Telugu"],
   },
   {
     id: "project-editorial-os",
-    category: "VINTAGE WEB PLATFORMS",
-    date: "MARCH 09, 2026",
-    headline: "Retrospection in Web Frameworks: Expert Designer Outlines the Gutenberg Method",
-    bulletin:
-      "Is modern web design losing its soul? Rythamo builds 'Editorial-OS' — an open-source Next.js styling system that mimics 1920s print media layouts with modern precision.",
-    fullStory:
-      "MALLA REDDY UNIVERSITY — Frustrated by generic web page grids, Rythamo developed 'Editorial-OS', an open-source Next.js styling system. The library mimics 1920s print media layouts using CSS column counts, line clamps, and realistic halftone SVG noise layers. Unlike traditional frameworks that constrain design choices, Editorial-OS empowers developers to build gorgeous, responsive grids that flow naturally — like printed ink on textured paper. It includes custom layout components, borders, and drop-cap presets.",
-    tags: ["Vanilla CSS", "Typography", "Newspaper Layout", "SEO"],
+    category: "DESIGN",
+    date: "2026",
+    headline: "BRUTALIST WEB",
+    bulletin: "Editorial-OS: 1920s print media logic meets modern Next.js grids.",
+    fullStory: "Minimalism. High contrast. Zero bloat. The new standard for web layout.",
+    tags: ["CSS", "Brutalism", "Next.js"],
   },
 ];
 
@@ -90,37 +84,33 @@ export interface Photo {
 export const PHOTOS: Photo[] = [
   {
     src: "/photos/cafe.jpg",
-    alt: "Rythamo at a Burger King workspace",
-    fileNo: "042",
-    caption:
-      "Subject analysing neural architectures in a fast-food workspace. Highlights mobile late-night research frameworks.",
+    alt: "Rythamo workspace",
+    fileNo: "01",
+    caption: "LATE NIGHT. MOBILE FRAMEWORKS.",
     width: 563,
     height: 750,
   },
   {
     src: "/photos/outdoors.jpg",
-    alt: "Rythamo on campus grounds",
-    fileNo: "043",
-    caption:
-      "Portrait of Vishnu Vardhan M on Malla Reddy campus grounds. Brown bomber jacket — relaxed thought in motion.",
+    alt: "Rythamo campus",
+    fileNo: "02",
+    caption: "MALLA REDDY CAMPUS.",
     width: 750,
     height: 1000,
   },
   {
     src: "/photos/umbrella.jpg",
-    alt: "Rythamo under a floral monsoon umbrella",
-    fileNo: "044",
-    caption:
-      "Self-portrait under a floral-print monsoon canopy, Gooty AP. Proves resilience against harsh ambient variables.",
+    alt: "Rythamo monsoon",
+    fileNo: "03",
+    caption: "MONSOON. GOOTY.",
     width: 563,
     height: 750,
   },
   {
     src: "/photos/silhouette.jpg",
-    alt: "Rythamo dramatic silhouette in checkered shirt",
-    fileNo: "045",
-    caption:
-      "Dramatically backlit silhouette — checkered shirt as metaphor for systematic thinking and parallel processing.",
+    alt: "Rythamo silhouette",
+    fileNo: "04",
+    caption: "SYSTEMATIC THINKING.",
     width: 750,
     height: 750,
   },

@@ -1,163 +1,90 @@
 // =====================================================================
 // components/sections/GallerySection.tsx
-// Photographic Archives — magazine-quality editorial photo spread
-// DESIGN INTENT:
-//   • Two big photos (full portrait height) + two smaller accents
-//   • Each photo shows FULLY — no crop, uses object-contain where needed
-//   • Masonry-style asymmetric layout on desktop
-//   • Dark caption strips overlay the bottom of each photo
+// Brutalist Photo Blocks
 // =====================================================================
 import Image from "next/image";
 import { PHOTOS } from "@/lib/data";
-import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export function GallerySection() {
   const [cafe, outdoors, umbrella, silhouette] = PHOTOS;
 
   return (
-    <section
-      className="py-10 border-b-2 border-ink px-4 sm:px-6 lg:px-8"
-      aria-label="Photographic Archives"
-    >
-      <SectionHeader
-        label="SECTION III · PHOTOGRAPHIC ARCHIVES"
-        title="Image Gallery & Catalogues"
-        labelColor="red"
-      />
+    <section className="py-12 border-b-4 border-ink" aria-label="Photo Archives">
+      <div className="px-4 sm:px-6 lg:px-8 mb-8">
+        <h2 className="title-brutalist-sub text-ink border-b-8 border-ink pb-2">
+          THE ARCHIVES
+        </h2>
+      </div>
 
-      {/*
-        Desktop layout:
-          [OUTDOORS — tall full portrait | CAFE landscape | UMBRELLA portrait]
-                      [SILHOUETTE — full width panorama strip]
-
-        Mobile: single column stacked
-      */}
-      <div className="space-y-4">
-        {/* Row 1: 3-column asymmetric */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_2fr_1.5fr] gap-4">
-          {/* Outdoors — large portrait: shows person top-to-bottom */}
-          <PhotoCard
-            photo={outdoors}
-            height="h-[520px] lg:h-[640px]"
-            objectPos="object-top"
-            featured
-          />
-
-          {/* Cafe — medium: seated wide shot */}
-          <PhotoCard
-            photo={cafe}
-            height="h-[520px] lg:h-[640px]"
-            objectPos="object-top"
-          />
-
-          {/* Umbrella — smaller accent */}
-          <PhotoCard
-            photo={umbrella}
-            height="h-[360px] sm:h-[520px] lg:h-[640px]"
-            objectPos="object-top"
-          />
+      <div className="px-4 sm:px-6 lg:px-8 space-y-6">
+        
+        {/* Top Split */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <BrutalistPhoto photo={outdoors} priority />
+          <BrutalistPhoto photo={cafe} />
         </div>
 
-        {/* Row 2: Silhouette — full-width cinematic strip */}
-        <div className="relative border border-ink overflow-hidden" style={{ height: "320px" }}>
-          <Image
-            src={silhouette.src}
-            alt={silhouette.alt}
-            fill
-            sizes="100vw"
-            className="object-cover object-center"
-            style={{
-              filter: "contrast(1.15) brightness(0.92) saturate(0.7)",
-            }}
-          />
-          {/* Dark gradient vignette */}
-          <div
-            className="absolute inset-0 z-10"
-            style={{
-              background:
-                "linear-gradient(to right, rgba(17,15,12,0.65) 0%, transparent 40%, transparent 60%, rgba(17,15,12,0.65) 100%)",
-            }}
-          />
-          {/* Centered text overlay on the silhouette */}
-          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-8 select-none">
-            <span className="font-typewriter text-[10px] text-white/50 uppercase tracking-[0.3em] mb-2">
-              FILE NO. {silhouette.fileNo}
-            </span>
-            <p
-              className="font-serif-display font-black italic text-white uppercase leading-tight"
-              style={{ fontSize: "clamp(1.4rem, 3vw, 2.8rem)" }}
-            >
-              The Thinker<br />of Gooty
-            </p>
-            <div className="mt-3 h-px w-24 bg-[#C4B060]" />
-            <p className="mt-3 font-typewriter text-[10px] text-white/60 uppercase tracking-wider max-w-md">
-              {silhouette.caption}
+        {/* Full width */}
+        <div className="brutalist-border bg-ink p-4 text-paper">
+          <div className="flex flex-col md:flex-row gap-6 items-center">
+            <div className="flex-1 space-y-2 text-center md:text-left">
+              <div className="font-sans-modern font-black text-6xl md:text-8xl tracking-tighter text-[#C4B060]">
+                {silhouette.fileNo}
+              </div>
+              <h3 className="font-serif-display font-black text-4xl md:text-6xl uppercase leading-none">
+                {silhouette.caption}
+              </h3>
+            </div>
+            <div className="relative w-full md:w-1/2 h-[400px] border-4 border-paper bg-paper">
+              <Image
+                src={silhouette.src}
+                alt={silhouette.alt}
+                fill
+                className="object-cover"
+                style={{ filter: "grayscale(100%) contrast(1.2)" }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Split */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <BrutalistPhoto photo={umbrella} />
+          
+          <div className="brutalist-border p-6 flex flex-col justify-center items-center text-center bg-[#6A5D21] text-paper">
+            <h2 className="font-sans-modern font-black text-4xl sm:text-6xl uppercase tracking-tighter leading-none mb-4">
+              1,674 MINUTES
+            </h2>
+            <p className="font-serif-text font-bold text-lg">
+              SPENT REFINING NEURAL ARCHITECTURES THIS YEAR.
             </p>
           </div>
         </div>
+
       </div>
     </section>
   );
 }
 
-// ── Sub-component: individual archive photo card ─────────────────────
-function PhotoCard({
-  photo,
-  height,
-  objectPos,
-  featured = false,
-}: {
-  photo: (typeof PHOTOS)[number];
-  height: string;
-  objectPos: string;
-  featured?: boolean;
-}) {
+function BrutalistPhoto({ photo, priority = false }: { photo: typeof PHOTOS[0], priority?: boolean }) {
   return (
-    <div className={`relative photo-archive ${height} overflow-hidden border border-ink`}>
-      <Image
-        src={photo.src}
-        alt={photo.alt}
-        fill
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        className={`object-cover ${objectPos}`}
-        style={{
-          filter: featured
-            ? "contrast(1.08) brightness(0.95) saturate(0.82)"
-            : "contrast(1.06) brightness(0.93) saturate(0.8)",
-        }}
-      />
-
-      {/* Scanline film overlay */}
-      <div
-        className="absolute inset-0 z-10 pointer-events-none"
-        style={{
-          background:
-            "repeating-linear-gradient(0deg, rgba(17,15,12,0.035) 0px, rgba(17,15,12,0.035) 1px, transparent 1px, transparent 4px)",
-        }}
-      />
-
-      {/* Caption strip */}
-      <div
-        className="absolute bottom-0 left-0 right-0 px-3 py-3 z-20"
-        style={{ background: "rgba(17,15,12,0.80)" }}
-      >
-        <div className="flex items-start justify-between gap-2">
-          <div className="space-y-0.5 flex-1">
-            <span className="font-typewriter text-[9px] font-bold text-[#C4B060] uppercase tracking-widest block">
-              FILE NO. {photo.fileNo}
-            </span>
-            <p className="font-typewriter text-[9px] text-white/70 uppercase tracking-wider leading-tight">
-              {photo.caption}
-            </p>
-          </div>
-          {featured && (
-            <span
-              className="shrink-0 font-typewriter text-[8px] font-bold uppercase px-1.5 py-0.5"
-              style={{ background: "#6A5D21", color: "#F5EFE4" }}
-            >
-              FEATURED
-            </span>
-          )}
+    <div className="brutalist-border p-3 bg-paper flex flex-col h-full">
+      <div className="relative w-full h-[500px] border-b-4 border-ink mb-3">
+        <Image
+          src={photo.src}
+          alt={photo.alt}
+          fill
+          priority={priority}
+          className="object-cover object-top"
+          style={{ filter: "contrast(1.2)" }}
+        />
+      </div>
+      <div className="flex justify-between items-end mt-auto">
+        <div className="font-sans-modern font-black text-2xl uppercase tracking-tighter leading-none w-2/3">
+          {photo.caption}
+        </div>
+        <div className="font-serif-display font-black text-3xl text-[#6A5D21]">
+          {photo.fileNo}
         </div>
       </div>
     </div>
