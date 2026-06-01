@@ -110,11 +110,11 @@ export default function NewspaperPortfolio() {
           </div>
 
           {/* Main Title Banner */}
-          <div className="flex flex-col items-center select-none">
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold font-serif-display tracking-tight text-ink uppercase leading-none">
+          <div className="flex flex-col items-center select-none px-2 text-center">
+            <h1 className="text-[clamp(1.75rem,5vw,4.5rem)] font-extrabold font-serif-display tracking-tight text-ink uppercase leading-none">
               The Rythamo Gazette
             </h1>
-            <p className="mt-2 text-xs sm:text-sm font-typewriter tracking-widest uppercase opacity-75">
+            <p className="mt-2 text-xs sm:text-sm font-typewriter tracking-widest uppercase opacity-75 text-center">
               INCORPORATING THE MALLA REDDY CHRONICLE • ESTABLISHED 2026
             </p>
           </div>
@@ -148,11 +148,11 @@ export default function NewspaperPortfolio() {
 
       {/* 3. FRONT PAGE LAYOUT (MAIN STORY & HERO) */}
       <main className="mt-6 flex-grow">
-        {/* Main Editorial Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b-2 border-ink pb-8">
+        {/* Main Editorial Grid - reflows beautifully across mobile (1 col), tablet (2 cols), and desktop (3 cols/12-span) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 border-b-2 border-ink pb-8">
           
-          {/* Column A (Sidebar Bio): Left 3 columns on LG */}
-          <aside className="lg:col-span-3 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-ink border-opacity-35 pb-6 lg:pb-0 lg:pr-6">
+          {/* Column A (Sidebar Bio): Left 3 columns on LG, Left half on MD, stacks on mobile */}
+          <aside className="md:col-span-1 lg:col-span-3 flex flex-col justify-between border-b md:border-b-0 md:border-r border-ink border-opacity-35 pb-6 md:pb-0 md:pr-6">
             <div className="space-y-4">
               <span className="text-[10px] font-sans-modern tracking-widest font-extrabold uppercase px-2 py-0.5 ink-badge inline-block">
                 THE CORRESPONDENT
@@ -160,10 +160,10 @@ export default function NewspaperPortfolio() {
               <h3 className="text-xl font-bold font-serif-display leading-tight border-b border-ink border-dashed pb-2">
                 Who is Rythamo?
               </h3>
-              <p className="text-sm font-serif-text leading-relaxed text-ink-light text-justify">
+              <p className="text-sm font-serif-text leading-relaxed text-ink-light text-justify text-wrap pretty">
                 Born in <strong>Gooty</strong>, Andhra Pradesh, <strong>Vishnu Vardhan M</strong> (widely addressed in the tech community as <strong>Rythamo</strong>) is an emerging voice in agentic software architecture.
               </p>
-              <p className="text-sm font-serif-text leading-relaxed text-ink-light text-justify">
+              <p className="text-sm font-serif-text leading-relaxed text-ink-light text-justify text-wrap pretty">
                 Currently pursuing his Computer Science and Engineering curriculum at <strong>Malla Reddy Deemed to be University</strong>, Rythamo bridges traditional algorithmic academic fundamentals with the dynamic capabilities of modern neural pipelines.
               </p>
               <div className="bg-paper-dark border border-ink p-3 rounded-none font-typewriter text-xs space-y-1 mt-4">
@@ -186,13 +186,13 @@ export default function NewspaperPortfolio() {
             </div>
           </aside>
 
-          {/* Column B (Main Hero Image & Lead Editorial): Center 6 columns on LG */}
-          <section className="lg:col-span-6 space-y-6">
+          {/* Column B (Main Hero Image & Lead Editorial): Center 6 columns on LG, Full width on MD to keep headlines imposing and legible */}
+          <section className="md:col-span-2 lg:col-span-6 space-y-6 order-first lg:order-none">
             <div className="space-y-3">
               <span className="text-xs font-sans-modern font-black tracking-widest text-accent-red uppercase block">
                 ★ SPECIAL DISPATCH ★
               </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black font-serif-display leading-tight text-ink uppercase">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-black font-serif-display leading-tight text-ink uppercase text-wrap balance tracking-tight">
                 CSE Scholar Declared Generative AI Engineer at Malla Reddy Deemed University
               </h2>
               <p className="text-base sm:text-lg font-serif-text italic text-ink-light leading-snug">
@@ -200,15 +200,15 @@ export default function NewspaperPortfolio() {
               </p>
             </div>
 
-            {/* Framed Editorial Photo */}
+            {/* Framed Editorial Photo - Preserves full vertical portrait without any cropping */}
             <div className="space-y-2">
-              <div className="photo-print-frame w-full aspect-[4/3] relative">
+              <div className="photo-print-frame w-full overflow-hidden">
                 <Image
                   src="/photos/outdoors.jpg"
                   alt="Vishnu Vardhan M (Rythamo) on campus"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="photo-print-image object-cover object-top"
+                  width={800}
+                  height={1100}
+                  className="w-full h-auto object-contain photo-print-image"
                   priority
                 />
               </div>
@@ -219,27 +219,27 @@ export default function NewspaperPortfolio() {
 
             {/* Double column lead paragraph */}
             <div className="columns-1 sm:columns-2 gap-6 text-sm font-serif-text leading-relaxed text-justify text-ink-light drop-cap">
-              <p className="drop-cap">
+              <p className="drop-cap text-wrap pretty">
                 As the paradigm of traditional computing continues to bend toward neural integration, the next wave of computer scientists are transforming into system choreographers. Vishnu Vardhan M, a promising software engineer at Malla Reddy University, is spearheading this localized transition. With a rigorous computer science foundation, Rythamo focuses his efforts on constructing robust agentic networks capable of autonomous code generation, parsing, and real-time environment execution. 
               </p>
-              <p className="mt-4 sm:mt-0">
+              <p className="mt-4 sm:mt-0 text-wrap pretty">
                 His technical portfolio showcases a deep specialization in Large Language Model (LLM) orchestration, structured JSON outputs, and safe schema integration. "The ultimate goal is creating interfaces that feel organic, alive, and mathematically coherent," he reports, describing the intersection of vintage aesthetics and state-of-the-art computational pipelines.
               </p>
             </div>
           </section>
 
-          {/* Column C (Secondary Story & Skills Classifieds): Right 3 columns on LG */}
-          <aside className="lg:col-span-3 space-y-6 lg:pl-6 border-t lg:border-t-0 lg:border-l border-ink border-opacity-35 pt-6 lg:pt-0">
+          {/* Column C (Secondary Story & Skills Classifieds): Right 3 columns on LG, Right half on MD, stacks on mobile */}
+          <aside className="md:col-span-1 lg:col-span-3 space-y-6 md:pl-6 border-t md:border-t-0 md:border-l border-ink border-opacity-35 pt-6 md:pt-0">
             {/* Editorial Opinion Column */}
             <div className="space-y-3 pb-6 border-b border-ink border-opacity-30">
               <span className="text-[10px] font-sans-modern tracking-widest font-black uppercase text-accent-blue block">
                 EDITORIAL COLUMN
               </span>
-              <h4 className="text-lg font-bold font-serif-display leading-tight text-ink uppercase">
+              <h4 className="text-lg font-bold font-serif-display leading-tight text-ink uppercase text-wrap balance">
                 From Gooty to the Frontier of Neural Design
               </h4>
               <p className="text-xs font-typewriter text-ink-muted">BY RYTHAMO</p>
-              <p className="text-xs font-serif-text leading-relaxed text-ink-muted text-justify">
+              <p className="text-xs font-serif-text leading-relaxed text-ink-muted text-justify text-wrap pretty">
                 "Growing up in Gooty, AP, taught me the value of efficiency. In water distribution, transport, or code: layout efficiency dictates outcomes. Generative AI is our loom, and words are our thread. By weaving robust schemas, we build digital structures that transcend simple scripts."
               </p>
             </div>
@@ -256,7 +256,7 @@ export default function NewspaperPortfolio() {
                 {/* Skill 1 */}
                 <div className="pt-2">
                   <h5 className="font-bold text-accent-red uppercase tracking-wider">SERVICES: AGENT ORCHESTRATION</h5>
-                  <p className="text-[11px] text-ink-muted leading-relaxed mt-1">
+                  <p className="text-[11px] text-ink-muted leading-relaxed mt-1 text-wrap pretty">
                     Design & deployment of multi-agent LLM systems. Expertise in Google Antigravity SDK, prompt framing, recursive validation, and human-in-the-loop safeguards. Sat. Guaranteed.
                   </p>
                 </div>
@@ -264,7 +264,7 @@ export default function NewspaperPortfolio() {
                 {/* Skill 2 */}
                 <div className="pt-3">
                   <h5 className="font-bold text-accent-red uppercase tracking-wider">TECHNICAL: FULL STACK DEVELOPMENT</h5>
-                  <p className="text-[11px] text-ink-muted leading-relaxed mt-1">
+                  <p className="text-[11px] text-ink-muted leading-relaxed mt-1 text-wrap pretty">
                     High-performance portfolios, headless CMS integrations, custom CSS/JS. Expert handling of Next.js 15, TypeScript, Tailwind, and relational SQL connectors. Call Ry_.
                   </p>
                 </div>
@@ -272,7 +272,7 @@ export default function NewspaperPortfolio() {
                 {/* Skill 3 */}
                 <div className="pt-3">
                   <h5 className="font-bold text-accent-red uppercase tracking-wider">AI/ML: CUSTOM DATA TRAINING</h5>
-                  <p className="text-[11px] text-ink-muted leading-relaxed mt-1">
+                  <p className="text-[11px] text-ink-muted leading-relaxed mt-1 text-wrap pretty">
                     Vector DB setup, semantic RAG systems, model fine-tuning with LoRA, dataset curation, and Telugu language model adjustments. Highly efficient pipelines.
                   </p>
                 </div>
@@ -289,13 +289,14 @@ export default function NewspaperPortfolio() {
           <span className="text-xs font-sans-modern tracking-widest font-black uppercase text-accent-blue inline-block mb-1">
             SECTION II: FEATURES & TECHNICAL INVENTIONS
           </span>
-          <h2 className="text-3xl font-extrabold font-serif-display tracking-tight text-ink uppercase">
+          <h2 className="text-3xl font-extrabold font-serif-display tracking-tight text-ink uppercase text-wrap balance">
             Special Bulletins & Project Reports
           </h2>
           <div className="w-24 h-1 border-t-2 border-double-ink border-ink mx-auto mt-2"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Reflows to 2 columns on tablet and 3 columns on desktop for visual balance */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {projects.map((project) => (
             <article 
               key={project.id} 
@@ -309,12 +310,12 @@ export default function NewspaperPortfolio() {
                 </div>
                 
                 {/* Project Headline */}
-                <h3 className="text-lg font-bold font-serif-display leading-snug text-ink uppercase my-2">
+                <h3 className="text-lg font-bold font-serif-display leading-snug text-ink uppercase my-2 text-wrap pretty tracking-tight">
                   {project.headline}
                 </h3>
                 
                 {/* Short Bulletin summary */}
-                <p className="text-sm font-serif-text text-ink-light leading-relaxed text-justify line-clamp-4">
+                <p className="text-sm font-serif-text text-ink-light leading-relaxed text-justify line-clamp-4 text-wrap pretty">
                   {project.bulletin}
                 </p>
               </div>
@@ -332,10 +333,10 @@ export default function NewspaperPortfolio() {
                   ))}
                 </div>
 
-                {/* Read button */}
+                {/* Read button - PY-3 provides a perfect minimum 44px tap target zone for touchscreens */}
                 <button
                   onClick={() => handleOpenStory(project)}
-                  className="w-full text-center py-2 border border-ink font-typewriter text-xs uppercase hover:bg-ink hover:text-paper transition-all cursor-pointer rounded-none active:translate-y-0.5"
+                  className="w-full text-center py-3 border border-ink font-typewriter text-xs font-bold uppercase hover:bg-ink hover:text-paper transition-all cursor-pointer rounded-none active:translate-y-0.5"
                 >
                   Read Full Report &rarr;
                 </button>
@@ -351,29 +352,29 @@ export default function NewspaperPortfolio() {
           <span className="text-xs font-sans-modern tracking-widest font-black uppercase text-accent-red inline-block mb-1">
             SECTION III: PHOTOGRAPHIC ARCHIVES
           </span>
-          <h2 className="text-3xl font-extrabold font-serif-display tracking-tight text-ink uppercase">
+          <h2 className="text-3xl font-extrabold font-serif-display tracking-tight text-ink uppercase text-wrap balance">
             Image Gallery & Catalogues
           </h2>
           <div className="w-24 h-1 border-t-2 border-double-ink border-ink mx-auto mt-2"></div>
         </div>
 
-        {/* Gallery Grid: 4 items */}
+        {/* Gallery Grid - Preserves full vertical portrait aspect ratios without any cropping */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           
           {/* Photo A (Cafe) */}
           <div className="space-y-2">
-            <div className="photo-print-frame aspect-[3/4] relative w-full">
+            <div className="photo-print-frame w-full overflow-hidden">
               <Image
                 src="/photos/cafe.jpg"
                 alt="Rythamo sitting in Cafe workspace"
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="photo-print-image object-cover"
+                width={800}
+                height={1200}
+                className="w-full h-auto object-contain photo-print-image"
               />
             </div>
             <div className="p-2 border border-ink bg-paper-dark text-xs space-y-1 font-serif-text italic">
               <div><strong>FILE NO. 042</strong></div>
-              <p className="text-[11px] text-ink-muted leading-tight">
+              <p className="text-[11px] text-ink-muted leading-tight text-wrap pretty">
                 Subject analyzing neural architectures inside a fast-food workspace. Highlights mobile late-night research frameworks.
               </p>
             </div>
@@ -381,18 +382,18 @@ export default function NewspaperPortfolio() {
 
           {/* Photo B (Outdoors Smiling) */}
           <div className="space-y-2">
-            <div className="photo-print-frame aspect-[3/4] relative w-full">
+            <div className="photo-print-frame w-full overflow-hidden">
               <Image
                 src="/photos/outdoors.jpg"
                 alt="Rythamo campus portrait smiling"
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="photo-print-image object-cover"
+                width={800}
+                height={1200}
+                className="w-full h-auto object-contain photo-print-image"
               />
             </div>
             <div className="p-2 border border-ink bg-paper-dark text-xs space-y-1 font-serif-text italic">
               <div><strong>FILE NO. 043</strong></div>
-              <p className="text-[11px] text-ink-muted leading-tight">
+              <p className="text-[11px] text-ink-muted leading-tight text-wrap pretty">
                 Academic profile shot of Vishnu Vardhan M at Malla Reddy University. Smile highlights successful deployment of local systems.
               </p>
             </div>
@@ -400,18 +401,18 @@ export default function NewspaperPortfolio() {
 
           {/* Photo C (Selfie Umbrella) */}
           <div className="space-y-2">
-            <div className="photo-print-frame aspect-[3/4] relative w-full">
+            <div className="photo-print-frame w-full overflow-hidden">
               <Image
                 src="/photos/umbrella.jpg"
                 alt="Rythamo under green umbrella"
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="photo-print-image object-cover"
+                width={800}
+                height={1200}
+                className="w-full h-auto object-contain photo-print-image"
               />
             </div>
             <div className="p-2 border border-ink bg-paper-dark text-xs space-y-1 font-serif-text italic">
               <div><strong>FILE NO. 044</strong></div>
-              <p className="text-[11px] text-ink-muted leading-tight">
+              <p className="text-[11px] text-ink-muted leading-tight text-wrap pretty">
                 Self-captured portrait under a floral print monsoon canopy in Gooty, AP. Proves resilience against harsh ambient variables.
               </p>
             </div>
@@ -419,18 +420,18 @@ export default function NewspaperPortfolio() {
 
           {/* Photo D (Silhouette check shirt) */}
           <div className="space-y-2">
-            <div className="photo-print-frame aspect-[3/4] relative w-full">
+            <div className="photo-print-frame w-full overflow-hidden">
               <Image
                 src="/photos/silhouette.jpg"
                 alt="Rythamo dramatic silhouette"
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="photo-print-image object-cover"
+                width={800}
+                height={1200}
+                className="w-full h-auto object-contain photo-print-image"
               />
             </div>
             <div className="p-2 border border-ink bg-paper-dark text-xs space-y-1 font-serif-text italic">
               <div><strong>FILE NO. 045</strong></div>
-              <p className="text-[11px] text-ink-muted leading-tight">
+              <p className="text-[11px] text-ink-muted leading-tight text-wrap pretty">
                 Dramatically backlit back-silhouette highlighting checkered shirt pattern. Symbolic of deep-thought compiler debugging.
               </p>
             </div>

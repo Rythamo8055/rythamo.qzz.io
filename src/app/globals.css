@@ -7,8 +7,9 @@
   --color-ink: #1C1A17;
   --color-ink-light: #47433B;
   --color-ink-muted: #6E685C;
-  --color-accent-red: #A33B30;
-  --color-accent-blue: #2A5A82;
+  --color-accent: #6A5D21;
+  --color-accent-red: #6A5D21;
+  --color-accent-blue: #554A18;
   
   --font-serif-display: var(--font-playfair), "Georgia", serif;
   --font-serif-text: var(--font-lora), "Georgia", serif;
@@ -39,13 +40,15 @@
   background: rgba(28, 26, 23, 0.6);
 }
 
-/* Base Body Styles with repeating ink/paper noise texture */
+/* Base Body Styles with repeating ink/paper noise texture and notch safe-area handling */
 body {
   background-color: var(--bg-paper);
   color: var(--ink);
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3E%3C/svg%3E");
   background-repeat: repeat;
   image-rendering: pixelated;
+  padding-left: max(0rem, env(safe-area-inset-left));
+  padding-right: max(0rem, env(safe-area-inset-right));
   selection-background-color: var(--ink);
   selection-color: var(--bg-paper);
   transition: background-color 0.3s ease;
@@ -92,17 +95,19 @@ body {
   z-index: 10;
 }
 
-/* Grayscale print effect */
+/* Grayscale print effect with responsive hover checks */
 .photo-print-image {
   filter: grayscale(100%) contrast(1.15) brightness(0.98);
   mix-blend-mode: multiply;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.photo-print-frame:hover .photo-print-image {
-  filter: grayscale(15%) contrast(1.05) brightness(1);
-  mix-blend-mode: normal;
-  transform: scale(1.02);
+@media (hover: hover) {
+  .photo-print-frame:hover .photo-print-image {
+    filter: grayscale(15%) contrast(1.05) brightness(1);
+    mix-blend-mode: normal;
+    transform: scale(1.02);
+  }
 }
 
 /* Vertical text label helper */
@@ -111,7 +116,7 @@ body {
   text-orientation: mixed;
 }
 
-/* Stamp Rotate Animation */
+/* Stamp Rotate Animation with reduced motion overrides */
 @keyframes stampRotate {
   0% {
     transform: rotate(0deg);
@@ -122,7 +127,28 @@ body {
 }
 
 .emblem-stamp-spin {
-  animation: stampRotate 40s linear infinite;
+  animation: stampRotate 45s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .emblem-stamp-spin {
+    animation: none;
+  }
+  .photo-print-image {
+    transition: none;
+  }
+  .photo-print-frame:hover .photo-print-image {
+    transform: none;
+  }
+  .editorial-card {
+    transition: none !important;
+    transform: none !important;
+  }
+  .ticker-marquee {
+    animation: none !important;
+    white-space: normal !important;
+    flex-wrap: wrap !important;
+  }
 }
 
 .emblem-stamp-spin:hover {
@@ -150,7 +176,7 @@ body {
 .ticker-marquee {
   display: flex;
   width: max-content;
-  animation: ticker 25s linear infinite;
+  animation: ticker 32s linear infinite;
 }
 
 .ticker-marquee:hover {
@@ -162,8 +188,11 @@ body {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.editorial-card:hover {
-  background-color: rgba(28, 26, 23, 0.02);
-  box-shadow: inset 0 0 12px rgba(28, 26, 23, 0.03), 0 8px 20px -10px rgba(28, 26, 23, 0.15);
-  transform: translateY(-2px);
+@media (hover: hover) {
+  .editorial-card:hover {
+    background-color: rgba(28, 26, 23, 0.02);
+    box-shadow: inset 0 0 12px rgba(28, 26, 23, 0.03), 0 8px 20px -10px rgba(28, 26, 23, 0.15);
+    transform: translateY(-2px);
+  }
 }
+
