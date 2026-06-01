@@ -65,6 +65,10 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+  icons: {
+    icon: "/logo.svg",
+    apple: "/logo.svg",
+  },
   robots: {
     index: true,
     follow: true,
