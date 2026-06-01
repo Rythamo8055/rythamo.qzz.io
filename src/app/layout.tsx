@@ -69,6 +69,9 @@ export const metadata: Metadata = {
     icon: "/logo.svg",
     apple: "/logo.svg",
   },
+  verification: {
+    google: "KDBy7Lwx-_7gwYyIWWpl5u82iu3F-TZFixkkZZBoCPA",
+  },
   robots: {
     index: true,
     follow: true,
