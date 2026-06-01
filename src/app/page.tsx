@@ -115,13 +115,27 @@ export default function Home() {
               <span className="text-[10px] tracking-[0.2em] font-sans-modern font-bold text-accent">CREATIVE AI DISPATCH</span>
             </div>
             
-            <div className="flex-1 flex justify-center items-center gap-4 sm:gap-6 py-3">
-              <h1 className="font-gothic text-4xl sm:text-6xl lg:text-[6.5rem] leading-none tracking-tight text-ink font-bold select-none">
-                The Rythamo
-              </h1>
+            <div className="flex-1 flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 py-3">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <h1 className="font-gothic text-4xl sm:text-6xl lg:text-[6.5rem] leading-none tracking-tight text-ink font-bold select-none">
+                  The Rythamo
+                </h1>
+                
+                {/* Mobile-only Emblem (hidden on desktop to preserve 3-item row) */}
+                <div className="w-12 h-12 shrink-0 md:hidden flex items-center justify-center cursor-pointer relative">
+                  <Image
+                    src="/logo.svg"
+                    alt="Rythamo Verified Emblem Stamp"
+                    width={48}
+                    height={48}
+                    className="w-full h-full emblem-spin shrink-0 select-none"
+                    priority
+                  />
+                </div>
+              </div>
               
-              {/* Spinning Brand Emblem Stamp */}
-              <div className="w-14 h-14 sm:w-24 sm:h-24 shrink-0 flex items-center justify-center cursor-pointer relative" title="Slowly Spinning Emblem Stamp (EST. 2026)">
+              {/* Desktop-only Emblem in center */}
+              <div className="w-16 h-16 sm:w-24 sm:h-24 shrink-0 hidden md:flex items-center justify-center cursor-pointer relative" title="Slowly Spinning Emblem Stamp (EST. 2026)">
                 <Image
                   src="/logo.svg"
                   alt="Rythamo Verified Emblem Stamp"
@@ -218,7 +232,7 @@ export default function Home() {
 
             {/* SECTION: SPECIAL REPORTS (PROJECTS) */}
             <section className="border-t-[4px] border-ink pt-6 mb-6">
-              <h4 className="font-anton text-2xl uppercase tracking-wider mb-6 text-accent border-b border-ink pb-2 select-none flex justify-between items-center">
+              <h4 className="font-anton text-xl sm:text-2xl uppercase tracking-wider mb-6 text-accent border-b border-ink pb-2 select-none flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 sm:gap-2">
                 <span>★ SPECIAL STORY INTEL: PROJECTS</span>
                 <span className="font-sans-modern text-[10px] tracking-widest text-ink-muted">VOL. XXVI</span>
               </h4>
@@ -354,7 +368,7 @@ export default function Home() {
 
             {/* SECTION: CLASSIFIED ADS (SKILLS) */}
             <section className="mb-6">
-              <h4 className="font-anton text-xl uppercase tracking-wider mb-4 border-b-2 border-ink pb-1 select-none flex justify-between items-center text-accent">
+              <h4 className="font-anton text-lg sm:text-xl uppercase tracking-wider mb-4 border-b-2 border-ink pb-1 select-none flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 sm:gap-2 text-accent">
                 <span>CLASSIFIED ADVERTISEMENTS</span>
                 <span className="font-sans-modern text-[9px] text-ink-muted font-bold">RATE: FREE</span>
               </h4>
@@ -401,7 +415,7 @@ export default function Home() {
                   </div>
                 )}
 
-                <div className="flex justify-between items-center border-b border-ink pb-2 mb-4 select-none">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-ink pb-2 mb-4 gap-1 select-none">
                   <h4 className="font-sans-modern text-xs font-black tracking-widest uppercase text-ink">
                     INDIAN TELEGRAPH WIRE FORM
                   </h4>
